@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="d-flex justify-content-between">
+          <h2>Product List</h2>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group mt-2 d-flex justify-content-between">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Launch static backdrop modal
+          </button>
+
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="col-md-4" *ngFor="let product of products | filter:searchTerm">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top product-img" src="https://via.placeholder.com/150x150" alt="Product image">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text">{{ product.description }}</p>
+                  <p class="card-text">Category: {{ product.category.name }}</p>
+                  <p class="card-text">Price: {{ product.price | currency }}</p>
+                  <p class="card-text">Quantity: {{ product.qty }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Add</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                    </div>
+                    <small class="text-muted">{{ product.dateCreated | date }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <form [formGroup]="formularioRegistro">
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-12">
+                      <label for="">category</label>
+                      <input type="text" class="form-control"
+                      id="nombre"
+                      placeholder="Ingrese categoria"
+                          formControlName="category.name"  appAutoFocus required>
+                  </div>
+              </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="">name</label>
+                        <input type="text" class="form-control"
+                        id="nombre"
+                        placeholder="Ingrese Nombre"
+                            formControlName="name"  appAutoFocus required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="">description</label>
+                        <input type="text" class="form-control" placeholder="Ingrese Descripcion"
+                            formControlName="description" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="">price</label>
+                        <input type="number" class="form-control" placeholder="Ingrese Precio"
+                            formControlName="price" required>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                      <label for="">qty</label>
+                      <input type="number" class="form-control" placeholder="Ingrese Cantidad"
+                          formControlName="qty" required>
+                  </div>
+              </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary"data-bs-dismiss="modal" (click)="addProduct()">Registrar</button>
+                    <button type="submit" class="btn btn-warning"
+                    data-bs-dismiss="modal">Actualizar</button>
+                    <button type="button" class="btn btn-warning" >Limpiar</button>
+                    <button type="button" class="btn btn-secondary" >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+
+
+</body>
+
+
+</html>
+
