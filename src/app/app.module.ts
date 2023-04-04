@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './filter.pipe';
 import { ProductComponent } from './components/product/product.component';
+import { LoginComponent } from './components/login/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     FilterPipe,
+    LoginComponent,
 
   ],
   imports: [

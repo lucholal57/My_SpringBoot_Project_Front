@@ -29,4 +29,8 @@ export class ProductService {
   postProduct(formularioRegistro:any):Observable<Product> {
     return this.http.post<Product>(this.api+ 'products/product', formularioRegistro,Headers);
   }
+
+  deleteProduct(id:number):Observable<any>{
+    return this.http.delete<any>(this.api+ 'products/product/' + id,Headers);
+  }
 }

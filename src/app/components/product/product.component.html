@@ -41,7 +41,7 @@
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">Add</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" (click)="deleteProduct(product.id)">Delete</button>
                     </div>
                     <small class="text-muted">{{ product.dateCreated | date }}</small>
                   </div>
@@ -68,11 +68,10 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-12">
-                      <label for="">category</label>
-                      <input type="text" class="form-control"
-                      id="nombre"
-                      placeholder="Ingrese categoria"
-                          formControlName="category.name"  appAutoFocus required>
+                    <label for="">Category</label>
+                    <select class="form-control" id="category" formControlName="category" (change)="setCategoryValue()" appAutoFocus required>
+                      <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
+                    </select>
                   </div>
               </div>
                 <div class="row">
@@ -109,10 +108,8 @@
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary"data-bs-dismiss="modal" (click)="addProduct()">Registrar</button>
-                    <button type="submit" class="btn btn-warning"
-                    data-bs-dismiss="modal">Actualizar</button>
-                    <button type="button" class="btn btn-warning" >Limpiar</button>
-                    <button type="button" class="btn btn-secondary" >Close</button>
+                    <button type="button" class="btn btn-warning" (click)="formularioRegistro.reset()" >Limpiar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="formularioRegistro.reset()">Close</button>
             </div>
           </div>
         </div>

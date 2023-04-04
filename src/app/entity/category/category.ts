@@ -3,4 +3,5 @@ export class Category {
     name?: string;
     dateCreated?: string;
     dateDeleted?: string;
+    categories: Category[]=[];
 }
