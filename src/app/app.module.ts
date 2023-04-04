@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './filter.pipe';
 import { ProductComponent } from './components/product/product.component';
 import { LoginComponent } from './components/login/login/login.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LoginComponent } from './components/login/login/login.component';
     ProductComponent,
     FilterPipe,
     LoginComponent,
+    NavComponent
 
   ],
   imports: [

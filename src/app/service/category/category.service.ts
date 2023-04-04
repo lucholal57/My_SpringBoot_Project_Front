@@ -7,7 +7,7 @@ import { Category } from 'src/app/entity/category/category';
 
 const Headers = {
   headers: new HttpHeaders({ 'content-type' : 'application/json',
-                              'Authorization' : 'Token' +" "+ localStorage.getItem('token')}),
+                              'Authorization' : 'Bearer' +" "+ localStorage.getItem('token')}),
 }
 
 @Injectable({
