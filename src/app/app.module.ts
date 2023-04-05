@@ -10,6 +10,7 @@ import { FilterPipe } from './filter.pipe';
 import { ProductComponent } from './components/product/product.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
+import { ShopComponent } from './components/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavComponent } from './components/nav/nav.component';
     ProductComponent,
     FilterPipe,
     LoginComponent,
-    NavComponent
+    NavComponent,
+    ShopComponent
 
   ],
   imports: [
