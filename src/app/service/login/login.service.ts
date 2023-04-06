@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from 'src/app/entity/user/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  private currentUser: User=new User();
   private api = 'http://localhost:8080/api/v1/'
 
   constructor(
@@ -25,5 +27,17 @@ export class LoginService {
   loginUser(username:string):Observable<User>{
     return this.http.get<User>(this.api+ 'users/user/?query=' + username)
   }
+
+  setCurrentUser(user: User) {
+    this.currentUser = user;
+  }
+
+  getCurrentUser(): User {
+    return this.currentUser;
+  }
+
+
+
+
 
 }

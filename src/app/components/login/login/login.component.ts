@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/entity/user/user';
 import { LoginService } from 'src/app/service/login/login.service';
 
@@ -10,12 +11,12 @@ import { LoginService } from 'src/app/service/login/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string="";
-  password: string="";
-  user:User=new User();
+  username: string = "";
+  password: string = "";
+  user: User = new User();
 
   constructor(private loginService: LoginService,
-              private router: Router) { }
+    private router: Router) { }
 
   login() {
     this.loginService.login(this.username, this.password).subscribe(
@@ -25,30 +26,17 @@ export class LoginComponent {
         const token = match ? match[1] : null;
         localStorage.setItem("token", token)
 
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           this.loginService.loginUser(this.username).subscribe(
             (res) => {
               this.user = res;
+              this.loginService.setCurrentUser(res);
               console.log(res);
-
+              this.router.navigate(['/product']);
             }
           )
-
-          this.router.navigateByUrl('product').then(() => {
-            setTimeout(() => {
-              window.location.reload();
-            }, 500);
-          });
         }
-
-
-      },
-
-      (error) => {
-        console.log(error);
-        alert("Error al Inciiar Sesion")
       }
-    )
+    );
   }
-
 }

@@ -63,8 +63,14 @@
                 </li>
               </ul>
               <hr>
-              <p class="float-right"><strong>Total: {{ getTotal() | currency }}</strong></p>
-              <button (click)="generatePurchase()">Generar compra</button>
+              <form>
+                <div class="form-group">
+                  <label for="description">Descripción:</label>
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion">
+                </div>
+                <p class="float-right"><strong>Total: {{ getTotal() | currency }}</strong></p>
+                <button class="btn btn-primary" (click)="generatePurchase()">Generar compra</button>
+              </form>
             </div>
           </div>
         </div>

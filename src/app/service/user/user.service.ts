@@ -24,8 +24,8 @@ constructor(
 ) { }
 
 //get Producto
-getUsers():Observable<User> {
-  return this.http.get<User>(this.api + 'users/user',httpOptions);
+getUsers():Observable<any> {
+  return this.http.get<any>(this.api + 'users/user',httpOptions);
 }
 
 }

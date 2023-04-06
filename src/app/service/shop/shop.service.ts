@@ -25,4 +25,8 @@ getShop():Observable<Shop> {
   return this.http.get<Shop>(this.api + 'shops/shop',Headers);
 }
 
+postShop(shop:Shop):Observable<Shop> {
+  return this.http.post<Shop>(this.api + 'shops/shop', shop,Headers);
+}
+
 }

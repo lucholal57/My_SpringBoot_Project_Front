@@ -13,7 +13,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>User</th>
           <th>Descripción</th>
           <th>Precio</th>
@@ -23,7 +22,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let purchase of purchases">
-          <td>{{ purchase.id }}</td>
           <td >{{ purchase.user.username }}</td>
           <td>{{ purchase.description }}</td>
           <td>{{ purchase.price | currency }}</td>
@@ -39,7 +37,8 @@
     </table>
   </div>
 
-  
+
+
 
 </body>
 </html>

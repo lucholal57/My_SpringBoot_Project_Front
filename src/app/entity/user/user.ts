@@ -10,6 +10,4 @@ export class User {
   role?: Role;
   dateCreated?: Date;
   dateDelete?: Date;
-  users:User[]=[];
-
 }

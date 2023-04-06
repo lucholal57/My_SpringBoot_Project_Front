@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/entity/user/user';
 import { UserService } from 'src/app/service/user/user.service';
 
 @Component({
@@ -21,9 +22,8 @@ export class UserComponent implements OnInit {
     this.sersService.getUsers().subscribe(
       (res) => {
         this.users = res.users;
-        console.log(this.users);
-      }
-    )
+        console.log(res);
+      })
   }
 
 }
