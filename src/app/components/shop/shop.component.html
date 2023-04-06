@@ -14,29 +14,32 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>User</th>
           <th>Descripción</th>
           <th>Precio</th>
           <th>Productos</th>
           <th>Fecha de creación</th>
-          <th>Fecha de eliminación</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let purchase of purchases">
           <td>{{ purchase.id }}</td>
+          <td >{{ purchase.user.username }}</td>
           <td>{{ purchase.description }}</td>
           <td>{{ purchase.price | currency }}</td>
           <td>
             <ul>
-              <li *ngFor="let product of purchase.product">{{ product.name }}</li>
+              <li *ngFor="let product of purchase.products">{{ product.name }}</li>
             </ul>
           </td>
           <td>{{ purchase.date_created | date }}</td>
-          <td>{{ purchase.date_deleted | date }}</td>
+
         </tr>
       </tbody>
     </table>
   </div>
+
+  
 
 </body>
 </html>

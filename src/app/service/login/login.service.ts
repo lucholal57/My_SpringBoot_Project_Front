@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/entity/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class LoginService {
     formData.append('username', username);
     formData.append('password', password);
     return this.http.post(this.api+ 'token/login', formData);
+  }
+
+  loginUser(username:string):Observable<User>{
+    return this.http.get<User>(this.api+ 'users/user/?query=' + username)
   }
 
 }

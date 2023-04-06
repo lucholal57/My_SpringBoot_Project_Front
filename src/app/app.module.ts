@@ -11,6 +11,7 @@ import { ProductComponent } from './components/product/product.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ShopComponent } from './components/shop/shop.component';
     FilterPipe,
     LoginComponent,
     NavComponent,
-    ShopComponent
+    ShopComponent,
+    UserComponent
 
   ],
   imports: [

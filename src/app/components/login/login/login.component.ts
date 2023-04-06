@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/entity/user/user';
 import { LoginService } from 'src/app/service/login/login.service';
 
 
@@ -11,6 +12,7 @@ import { LoginService } from 'src/app/service/login/login.service';
 export class LoginComponent {
   username: string="";
   password: string="";
+  user:User=new User();
 
   constructor(private loginService: LoginService,
               private router: Router) { }
@@ -23,9 +25,22 @@ export class LoginComponent {
         const token = match ? match[1] : null;
         localStorage.setItem("token", token)
 
-        this.router.navigateByUrl('product').then(() => {
-          window.location.reload();
-        })
+        if(localStorage.getItem("token")){
+          this.loginService.loginUser(this.username).subscribe(
+            (res) => {
+              this.user = res;
+              console.log(res);
+
+            }
+          )
+
+          this.router.navigateByUrl('product').then(() => {
+            setTimeout(() => {
+              window.location.reload();
+            }, 500);
+          });
+        }
+
 
       },
 

@@ -1,14 +1,15 @@
 import { Role } from "src/app/enum/role.enum";
 
-export interface User {
+export class User {
   id?: number;
   username?: string;
   firstName?: string;
   lastName?: string;
   email?: string;
   password?: string;
-  role: Role;
+  role?: Role;
   dateCreated?: Date;
   dateDelete?: Date;
+  users:User[]=[];
 
 }

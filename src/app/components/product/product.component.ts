@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Category } from 'src/app/entity/category/category';
+import { Product } from 'src/app/entity/product/product';
+import { Shop } from 'src/app/entity/shop/shop';
 import { CategoryService } from 'src/app/service/category/category.service';
 import { ProductService } from 'src/app/service/product/product.service';
+import { LoginComponent } from '../login/login/login.component';
 
 @Component({
   selector: 'app-product',
@@ -15,6 +18,7 @@ export class ProductComponent {
   categories:any[] =[];
   categoryName="";
   obj=new Object();
+  cart: Product[] = [];
 
 
   constructor(private productService: ProductService,
@@ -79,6 +83,30 @@ export class ProductComponent {
     )
   }
 
-  editProduct(){}
+  addToCart(product: Product) {
+    this.cart.push(product);
+  }
+
+  removeFromCart(product: Product) {
+    const index = this.cart.indexOf(product);
+    if (index !== -1) {
+      this.cart.splice(index, 1);
+    }
+  }
+
+  getTotal(): number {
+    return this.cart.reduce((total, product) => total + product.price!, 0);
+  }
+
+  generatePurchase(){
+    const shop: Shop = {
+      description: 'Compra de productos',
+      price: this.getTotal(),
+      //user: this.currentUser;
+      product: this.cart,
+      date_created: new Date()
+    };
+    console.log("shopppp",shop)
+  }
 
 }

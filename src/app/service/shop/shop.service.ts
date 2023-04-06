@@ -22,7 +22,7 @@ constructor(
 ) { }
 
 getShop():Observable<Shop> {
-  return this.http.get<Shop>(this.api + '/shops/shop',Headers);
+  return this.http.get<Shop>(this.api + 'shops/shop',Headers);
 }
 
 }

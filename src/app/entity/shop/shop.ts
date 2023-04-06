@@ -1,10 +1,11 @@
 import { Product } from "../product/product";
 
-export interface Shop {
+export class Shop {
   id?: number;
   description?: string;
-  price?: DoubleRange;
-  product: Product[];
+  price?: number;
+  product: Product[]=[];
   date_created?: Date;
   date_deleted?: Date;
+  shops?:Shop[]=[];
 }
